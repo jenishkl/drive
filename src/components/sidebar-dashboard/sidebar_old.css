@@ -1,0 +1,305 @@
+/****** Sidebar CSS ******/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Sidebar Left ===== */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 230px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 9999;
+    box-shadow: inset 0px 0px 3px 0px #6c6a6a;
+}
+.sidebar.close{
+    width: 88px;
+}
+.sidebar li{
+    height: 30px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.sidebar .nav-link .active{
+    background: var(--primary-color);
+}
+.sidebar .nav-link .active .icon{
+    color:white;
+}.sidebar .nav-link .active .text{
+     color:white;
+ }
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 50px;
+    border-radius: 6px;
+}
+.sidebar .icon{
+    min-width: 50px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+.sidebar .text{
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+.sidebar header{
+    position: relative;
+    padding-bottom:1em;
+}
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+.sidebar header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.sidebar header .image-text .profession{
+    font-size: 14px;
+    margin-top: -2px;
+    display: block;
+}
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar header .image .open-logo{
+    width: 190px;
+    border-radius: 6px;
+}
+.sidebar header .image .dark-logo{
+    width: 190px;
+    border-radius: 6px;
+}
+.sidebar header .image .closed-logo{
+    width: 50px;
+    border-radius: 6px;
+}
+.category-titles{
+    font-size: 13px;
+    font-weight: 600;
+    padding: 18px;
+    color:var(--text-color);
+    background: #ededed8c
+}
+body.dark .category-titles{
+    background: #5656568c;
+}
+.sidebar header .toggle{
+    position: absolute;
+    top: 45%;
+    right: -35px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 30px;
+    width: 30px;
+    background-color: var(--primary-color);
+    color: var(--toggle-color);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+.sidebar header .toggle-open{
+    position: absolute;
+    top: 45%;
+    right: -35px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 30px;
+    width: 30px;
+    background-color: var(--primary-color);
+    color: var(--toggle-color);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+body.dark .sidebar header .toggle-open{
+    color: var(--text-color);
+}
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+.sidebar .menu{
+    margin-top: 10px;
+}
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+    margin-bottom: 1em;
+}
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+.sidebar .add-button{
+    margin-left: 0.3em;
+}
+.sidebar #addBtn{
+    width: 100px;
+    height: 50px;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    background: var(--body-color);
+    border:2px solid var(--primary-color);
+    color:var(--text-color);
+    transition: var(--tran-05);
+    outline: none;
+    padding-left: 0;
+}
+.sidebar #addBtn:hover{
+    background: var(--primary-color);
+
+}
+.sidebar #addBtn:hover .text{
+    color:#fff;
+}
+.sidebar #addBtn:hover .icon{
+    color:#fff;
+}
+.sidebar.close #addBtn{
+    width:55px!important;
+}
+.sidebar #addDrop{
+    background: var(--body-color);
+    color:var(--text-color);
+    opacity:1;
+}
+.sidebar #addDrop li{
+    margin-top:0px;
+}
+.sidebar #addDrop li a span{
+    padding-right: 17px;
+}
+.sidebar.close #addDrop{
+    opacity:0;
+}
+.sidebar li a:hover{
+    background-color: var(--navbar-color);
+    border:2px solid var(--primary-color)
+}
+
+.sidebar li a:hover .icon{
+    color: var(--primary-color);
+}
+.sidebar li a:hover .text{
+    color:  var(--primary-color);
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.sidebar .menu-bar .menu-links{
+    padding-left: 0.5rem!important;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+/* ===== Remove Later ===== */
+.bottom-content .theme a:hover{
+    background-color: var(--sidebar-color)!important;
+    cursor:default!important;
+
+}
+.bottom-content .theme a:hover .text,
+.bottom-content .theme a:hover .icon{
+    color:var(--text-color) !important;
+}
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+.sidebar .menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}

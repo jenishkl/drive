@@ -1,0 +1,10 @@
+.popup-items {
+  text-align: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.popup-items:hover {
+  cursor: pointer;
+  color: var(--primary-color);
+}

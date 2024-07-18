@@ -1,0 +1,127 @@
+import DriveFilter from "@/components/Drive/DriveFilter";
+import FileCard from "@/components/Drive/FIleCard";
+import FolderCard from "@/components/Drive/FolderCard";
+import FolderRootView from "@/components/Drive/FolderRootView";
+import ListView from "@/components/c-drive/ListView";
+import ImageCommon from "@/components/imagecomponent/ImageCommon";
+import { emptyFolders } from "@/helpers/images";
+import { Each, decriptData, imageurl } from "@/helpers/utils";
+// import DriveLayout from "@/layout/DriveLayout";
+import API from "@/store/api";
+import { Grid, Stack, Typography } from "@mui/material";
+import React from "react";
+
+export const dynamic = "force-dynamic";
+export default async function page({ params, searchParams }) {
+  const folder = decriptData(params?.folder);
+  let folder_id = folder?.split("_")?.[0];
+  let drive = folder?.split("_")?.[1];
+  let param = {
+    folder_id,
+    drive,
+    file_type: searchParams?.file_type,
+  };
+
+  let driveData = {};
+  await API.get(`/cdrive/driveView/`, {
+    params: param,
+  })
+    .then((d) => (driveData = d))
+    .catch((e) => console.log("e", e));
+  const { folders, files } = driveData || {};
+  return (
+    <>
+      {/* <DriveLayout
+        folder_details={driveData?.folder_details}
+        grand_folder_details={driveData?.grand_folder_details}
+      > */}
+        <FolderRootView
+          folder_root={driveData["folder_path"]}
+          drive={drive}
+          folder_id={folder_id}
+          grand_folder_details={driveData?.grand_folder_details}
+        />
+
+        <DriveFilter
+          folder_details={driveData?.folder_details}
+          grand_folder_details={driveData?.grand_folder_details}
+        />
+        {searchParams?.view != "table" && (
+          <>
+            <Grid container spacing={4} padding={2}>
+              <Each
+                of={driveData?.folders ?? []}
+                render={(it) => (
+                  <Grid item xs={12} sm={6} md={4} lg={2.4} xl={2}>
+                    {/* <Link to={`/admin/drive/my-drive/${it?.id}`}> */}
+                    <FolderCard
+                      detail={it}
+                      name={it?.name}
+                      id={it?.id}
+                      archive={it?.archive}
+                      stage={it?.stage}
+                      bin={it?.bin}
+                      color={it?.folder_color}
+                      drive={it?.drive}
+                    />
+                    {/* </Link> */}
+                  </Grid>
+                )}
+              />
+            </Grid>
+            <Grid container spacing={4} padding={2}>
+              <Each
+                of={driveData?.files ?? []}
+                render={(it) => (
+                  <Grid item xs={12} sm={6} md={4} lg={2.4} xl={2}>
+                    <FileCard
+                      name1={it?.file_name}
+                      id={it?.id}
+                      size={it?.file_size}
+                      stage={it?.stage}
+                      bin={it?.bin}
+                      drive={it?.drive}
+                      file_link={it?.file_link}
+                      archive={it?.archive}
+                      detail={it}
+                      file_type={it?.file_ext}
+                      file={it?.file_link ?? imageurl(it?.file_path)}
+                    />
+                  </Grid>
+                )}
+              />
+
+              {!driveData?.folders?.[0] && !driveData?.files?.[0] && (
+                <Grid item xs={4} margin={"auto"}>
+                  <Stack direction={"column"} gap={2} alignItems={"center"}>
+                    <ImageCommon
+                      src={emptyFolders}
+                      aspectRatio={1}
+                      objectFit="contain"
+                    />
+                    <Stack
+                      direction={"column"}
+                      // gap={1}
+                      alignItems={"center"}
+                      textAlign={"center"}
+                    >
+                      <Typography variant="bold" size="high">
+                        Drop files here
+                      </Typography>
+                      <Typography variant="light" size="small">
+                        Or use the ‘New’ button to upload files or folders
+                      </Typography>{" "}
+                    </Stack>
+                  </Stack>
+                </Grid>
+              )}
+            </Grid>
+          </>
+        )}
+        {searchParams?.view == "table" && (
+          <ListView data={[...(folders ?? []), ...(files ?? [])]} />
+        )}
+      {/* </DriveLayout> */}
+    </>
+  );
+}

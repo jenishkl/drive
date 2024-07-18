@@ -1,0 +1,109 @@
+.floating-label-content-textarea {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label-textarea {
+  font-family: "Montserrat", sans-serif;
+  /* color: #707070; */
+  /*font-size: 13px;*/
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  /*top: 6px;*/
+  /*top: 20px;*/
+  top: 11px;
+  padding: -5px 2px;
+  background: var(--body-color);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.floating-textarea {
+  min-height: 100px;
+  max-height: 200px;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.floating-input-textarea {
+  /*margin-top: 10px;*/
+  font-family: "Montserrat", sans-serif;
+  /*margin applied*/
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  /*height: 50px;*/
+  height: 56px;
+  /*height: 40px;*/
+  padding: 10px;
+  /*background: transparent;*/
+  background: transparent;
+  color: #000000;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  box-sizing: border-box;
+  /*outline: none;*/
+}
+.floating-input-textarea::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.floating-input-textarea:focus {
+  outline: none;
+  /*outline: 2px solid red;*/
+  border: 2px solid #2552ec !important;
+  /*border: none;*/
+}
+
+.floating-input-textarea:not(:placeholder-shown) ~ label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color);
+  /* color: #707070; */
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+/* .floating-input:not(:placeholder-shown) ~ label, */
+.floating-input-textarea:focus ~ label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color);
+  color: #2552ec !important;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+/* 
+.floating-input-textarea:hover {
+  border: 1px solid red;
+}
+
+.floating-input-textarea:hover:focus {
+  outline: none;
+  border: 2px solid #2552ec !important;
+}
+
+.floating-input-textarea:hover:focus ~ label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color);
+  color: #2552ec !important;
+  padding: 0px 5px;
+  font-weight: 500;
+} */
+
+/* .floating-input:focus:not(:placeholder-shown) ~ .label {
+  /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+/* top: -8px;
+  font-size: 13px;
+  background: #fff;
+  color: #2552ec;
+  padding: 0px 5px;
+  font-weight: 500; */
+/* } */

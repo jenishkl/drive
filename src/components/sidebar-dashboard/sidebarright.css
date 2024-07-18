@@ -1,0 +1,287 @@
+/* ===== Sidebar Right ===== */
+
+.sidebar-right{
+    position: fixed;
+    top: 18em;
+    right: 0px;
+    height: 50%;
+    width: 250px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+    box-shadow: inset 0px 0px 4px 0px #6c6a6a;;
+}
+.sidebar-right.close{
+    width: 0px;
+    right: -30px;
+}
+.sidebar-right li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.sidebar-right header .image,
+.sidebar-right .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+.sidebar-right .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.sidebar-right .text,
+.sidebar-right .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+.sidebar-right .text{
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar-right.close .text{
+    opacity: 0;
+}
+.sidebar-right header{
+    position: relative;
+}
+.sidebar-right header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar-right header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-right header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.sidebar-right header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+.sidebar-right header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar-right header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar-right header .toggle-icon-box{
+    position: absolute;
+    top: 10em;
+    left: -64px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 40px;
+    width: 50px;
+    background-color: var(--navbar-color);
+    color: var(--primary-color);
+    border:2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sidebar-right header .toggle-icon-box:hover{
+    background-color: var(--primary-color);
+    color: var(--navbar-color);
+}
+.sidebar-right .close li a:hover{
+}
+body.dark .sidebar-right header .toggle{
+    color: var(--text-color);
+}
+body.dark .sidebar-right header .toggle-open{
+    color: var(--text-color);
+}
+.sidebar-right.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+.sidebar-right .menu{
+    margin-top: 40px;
+}
+.sidebar-right li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+.sidebar-right li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar-right li a:hover .icon,
+.sidebar-right li a:hover .text{
+    color: var(--sidebar-color);
+}
+body.dark .sidebar-right li a:hover .icon,
+body.dark .sidebar-right li a:hover .text{
+    color: var(--text-color);
+}
+.sidebar-right .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+.sidebar-right.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar-right .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+.sidebar-right .menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+.sidebar-right .menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+.sidebar-right .mode .sun-moon i{
+    position: absolute;
+}
+.sidebar-right .mode .sun-moon i.sun{
+    opacity: 0;
+}
+.sidebar-right .menu-bar .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.sidebar-right .toggle-switch .switch1{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+.sidebar-right .switch1::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+.sidebar-right .toggle-switch .switch2{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+.sidebar-right .switch2::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+.theme{
+    display:block!important;
+}
+.theme-list{
+    margin-bottom:3em;
+}
+.theme-item button{
+    width:40px;
+    height:40px;
+    border-radius:100% ;
+}
+.theme-item .purple{
+    background: #800080;
+}
+.theme-item .orange{
+    background: #FF5733 ;
+}
+.theme-item .iris{
+    background: #5D3FD3 ;
+}
+.theme-item .pink-medium{
+    background: #FF2171;
+}
+.theme-item .teal{
+    background: #22A699;
+}
+.theme-item .green-dark{
+    background: #025464;
+}
+
+
+/* ===== Dark Mode ===== */
+
+body .sidebar .dark .switch::before{
+    left: 20px;
+}
+body.sidebar-right .dark .switch::before{
+    right: 20px;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+body.dark .home .text{
+    color: var(--text-color);
+}
+.rotate{
+    animation: rotation 2s infinite linear;
+    -webkit-animation: rotation 2s infinite linear;
+    -moz-animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

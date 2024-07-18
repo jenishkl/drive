@@ -1,0 +1,958 @@
+.did-floating-label-content {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.did-floating-label {
+  font-family: "Montserrat", sans-serif;
+  /* color: #707070; */
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  top: 11px;
+  padding: -5px 2px;
+  background: transparent;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.did-floating-label span {
+  color: red;
+}
+
+.did-floating-input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 0 10px;
+  background: var(--body-color) !important;
+  border: 1px solid var(--input-border) !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.did-floating-input:focus {
+  outline: none;
+  border: 2px solid #2552ec !important;
+}
+
+.did-floating-input:focus ~ .did-floating-label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  padding: 0px 5px;
+  color: #2552ec !important;
+  font-weight: 500;
+}
+
+.did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  color: var(--text-color) !important;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+/*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+.did-floating-input:focus:not(:placeholder-shown) + .did-floating-label {
+  /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  color: var(--text-color) !important;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+.did-floating-input::placeholder {
+  font-size: 12px;
+  color:var(--text-color);
+}
+
+/*read Only*/
+.did-floating-input:read-only {
+  color: var(--text-color) !important;
+}
+
+.did-floating-input:read-only:focus {
+  border: 1px solid var(--input-border) !important;
+  color: var(--text-color) !important;
+}
+
+.did-floating-input:read-only:focus ~ .did-floating-label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  color: var(--text-color) !important;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+/*disable*/
+
+.did-floating-input:disabled {
+  color: var(--text-color) !important;
+}
+
+.did-floating-input:disabled:focus {
+  border: 1px solid var(--input-border) !important;
+  color: var(--text-color) !important;
+}
+
+.did-floating-input:disabled:focus ~ .did-floating-label {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  color: var(--text-color) !important;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+/* input:-webkit-autofill {
+  -webkit-background-clip: text;
+} */
+
+/* input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+} */
+
+/*Error Input*/
+
+.did-floating-label-content-error {
+  position: relative;
+  /*margin-bottom: 20px;*/
+}
+
+.did-floating-label-error {
+  font-family: "Montserrat", sans-serif;
+  color: red !important;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  top: 11px;
+  padding: -5px 2px;
+  background: transparent;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.did-floating-label-error span {
+  color: red;
+}
+
+.did-floating-input-error {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  /* background: var(--body-color) !important; */
+  background: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.did-floating-input-error:valid {
+  outline: none;
+  /*border: 2px solid red;*/
+  color: red;
+  -webkit-text-fill-color: red;
+}
+
+/*.did-floating-input-error:focus {*/
+/*    outline: none;*/
+/*    border: 2px solid red;*/
+/*    !*color: red;*!*/
+
+/*}*/
+
+.did-floating-input-error:focus ~ .did-floating-label-error {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  padding: 0px 5px;
+  color: red;
+  font-weight: 500;
+}
+
+.did-floating-input-error:not(:placeholder-shown) ~ .did-floating-label-error {
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  /* background: transparent; */
+  color: red;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+/*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+.did-floating-input-error:focus:not(:placeholder-shown)
+  + .did-floating-label-error {
+  /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+  top: -8px;
+  font-size: 12px;
+  background: var(--body-color) !important;
+  /* background: transparent; */
+  color: red;
+  padding: 0px 5px;
+  font-weight: 500;
+}
+
+.did-floating-input-error::placeholder {
+  font-size: 12px;
+  color: red;
+}
+
+/*error place in input*/
+
+.did-floating-input-error-below {
+  /*position: relative;*/
+  font-size: 11px;
+  font-weight: 500;
+  color: red;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+.did-floating-input-error-below i {
+  transform: rotate(180deg);
+  margin-right: 1px;
+}
+
+/*!*read Only*!*/
+/*.did-floating-input-error:read-only {*/
+/*    color: #707070;*/
+/*}*/
+
+/*.did-floating-input-error:read-only:focus {*/
+/*    border: 1px solid rgb(218, 220, 224);*/
+/*    color: #707070;*/
+
+/*}*/
+
+/*.did-floating-input-error:read-only:focus ~ .did-floating-label-error {*/
+/*    top: -8px;*/
+/*    font-size: 12px;*/
+/*    background: #fff;*/
+/*    color: #707070;*/
+/*    padding: 0px 5px;*/
+/*    font-weight: 500;*/
+/*}*/
+
+/*!*disable*!*/
+
+/*.did-floating-input-error:disabled {*/
+/*    color: #707070;*/
+/*}*/
+
+/*.did-floating-input-error:disabled:focus {*/
+/*    border: 1px solid rgb(218, 220, 224);*/
+/*    color: #707070;*/
+/*}*/
+
+/*.did-floating-input-error:disabled:focus ~ .did-floating-label-error {*/
+/*    top: -8px;*/
+/*    font-size: 12px;*/
+/*    background: #fff;*/
+/*    color: #707070;*/
+/*    padding: 0px 5px;*/
+/*    font-weight: 500;*/
+/*}*/
+
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/*Media Query*/
+
+@media only screen and (max-width: 480px) {
+  .did-floating-label-content {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .did-floating-label {
+    font-family: "Montserrat", sans-serif;
+    /* color: #707070; */
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 6px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label span {
+    color: red;
+  }
+
+  .did-floating-input {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    /* background: #fff; */
+    background: transparent;
+    /* color: #000000; */
+    border: 1px solid var(--input-border) !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .did-floating-input:focus {
+    outline: none;
+    border: 2px solid #2552ec !important;
+  }
+
+  .did-floating-input:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    padding: 0px 5px;
+    color: #2552ec !important;
+    font-weight: 500;
+  }
+
+  .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input:focus:not(:placeholder-shown) + .did-floating-label {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    color: #2552ec !important;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input::placeholder {
+    font-size: 10px;
+    color: #2552ec !important;
+  }
+
+  /*read Only*/
+  .did-floating-input:read-only {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*disable*/
+  .did-floating-input:disabled {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background:var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*Error Input*/
+  .did-floating-label-content-error {
+    position: relative;
+    /*margin-bottom: 20px;*/
+  }
+
+  .did-floating-label-error {
+    font-family: "Montserrat", sans-serif;
+    color: red !important;
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 6px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label-error span {
+    color: red;
+  }
+
+  .did-floating-input-error {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /*necessary one*/
+  .did-floating-input-error:valid {
+    outline: none;
+    /*border: 2px solid red;*/
+    color: red;
+    -webkit-text-fill-color: red;
+  }
+
+  .did-floating-input-error:focus {
+    outline: none;
+    border: 2px solid red;
+  }
+
+  .did-floating-input-error:focus ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    padding: 0px 5px;
+    color: red;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error:not(:placeholder-shown)
+    ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 10px;
+    background:var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input-error:focus:not(:placeholder-shown)
+    + .did-floating-label-error {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error::placeholder {
+    font-size: 10px;
+    color: red;
+  }
+
+  input:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 768px) {
+  .did-floating-label-content {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .did-floating-label {
+    font-family: "Montserrat", sans-serif;
+    /* color: #707070; */
+    font-size: 13px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 10px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label span {
+    color: red;
+  }
+
+  .did-floating-input {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    background: transparent;
+    /* color: #000000; */
+    border: 1px solid var(--input-border) !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .did-floating-input:focus {
+    outline: none;
+    border: 2px solid #2552ec !important;
+  }
+
+  .did-floating-input:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 11px;
+    background: var(--body-color) !important;
+    padding: 0px 5px;
+    color: #2552ec !important;
+    font-weight: 500;
+  }
+
+  .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+    top: -8px;
+    font-size: 11px;
+    background:var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input:focus:not(:placeholder-shown) + .did-floating-label {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 11px;
+    background: var(--body-color) !important;
+    color: #2552ec !important;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input::placeholder {
+    font-size: 11px;
+    color: #2552ec !important;
+  }
+
+  /*read Only*/
+  .did-floating-input:read-only {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 11px;
+    background:var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*disable*/
+  .did-floating-input:disabled {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 11px;
+    background: var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*Error Input*/
+  .did-floating-label-content-error {
+    position: relative;
+    /*margin-bottom: 20px;*/
+  }
+
+  .did-floating-label-error {
+    font-family: "Montserrat", sans-serif;
+    color: red !important;
+    font-size: 13px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 10px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label-error span {
+    color: red;
+  }
+
+  .did-floating-input-error {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /*necessary one*/
+  .did-floating-input-error:valid {
+    outline: none;
+    /*border: 2px solid red;*/
+    color: red;
+    -webkit-text-fill-color: red;
+  }
+
+  .did-floating-input-error:focus {
+    outline: none;
+    border: 2px solid red;
+  }
+
+  .did-floating-input-error:focus ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 11px;
+    background:var(--body-color) !important;
+    padding: 0px 5px;
+    color: red;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error:not(:placeholder-shown)
+    ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 11px;
+    background: var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input-error:focus:not(:placeholder-shown)
+    + .did-floating-label-error {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 11px;
+    background: var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error::placeholder {
+    font-size: 11px;
+    color: red;
+  }
+
+  input:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+/*Iphone*/
+
+@media only screen and (min-width: 360px) and (max-width: 450px) {
+  .did-floating-label-content {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .did-floating-label {
+    font-family: "Montserrat", sans-serif;
+    /* color: #707070; */
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 6px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label span {
+    color: red;
+  }
+
+  .did-floating-input {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    background: transparent;
+    /* color: #000000; */
+    border: 1px solid var(--input-border) !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .did-floating-input:focus {
+    outline: none;
+    border: 2px solid #2552ec !important;
+  }
+
+  .did-floating-input:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    padding: 0px 5px;
+    color: #2552ec !important;
+    font-weight: 500;
+  }
+
+  .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background:var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input:focus:not(:placeholder-shown) + .did-floating-label {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    color: #2552ec !important;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input::placeholder {
+    font-size: 10px;
+    color: #2552ec !important;
+  }
+
+  /*read Only*/
+  .did-floating-input:read-only {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:read-only:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*disable*/
+  .did-floating-input:disabled {
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus {
+    border: 1px solid var(--input-border) !important;
+    /* color: #707070; */
+  }
+
+  .did-floating-input:disabled:focus ~ .did-floating-label {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    /* color: #707070; */
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*Error Input*/
+  .did-floating-label-content-error {
+    position: relative;
+    /*margin-bottom: 20px;*/
+  }
+
+  .did-floating-label-error {
+    font-family: "Montserrat", sans-serif;
+    color: red !important;
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 6px;
+    padding: -5px 2px;
+    background: transparent;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .did-floating-label-error span {
+    color: red;
+  }
+
+  .did-floating-input-error {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /*necessary one*/
+  .did-floating-input-error:valid {
+    outline: none;
+    /*border: 2px solid red;*/
+    color: red;
+    -webkit-text-fill-color: red;
+  }
+
+  .did-floating-input-error:focus {
+    outline: none;
+    border: 2px solid red;
+  }
+
+  .did-floating-input-error:focus ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    padding: 0px 5px;
+    color: red;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error:not(:placeholder-shown)
+    ~ .did-floating-label-error {
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  /*.did-floating-input:not(:placeholder-shown) + .did-floating-label,*/
+  .did-floating-input-error:focus:not(:placeholder-shown)
+    + .did-floating-label-error {
+    /*.did-floating-input:focus:not(:placeholder-shown) ~ .did-floating-label [necessary] {*/
+    top: -8px;
+    font-size: 10px;
+    background: var(--body-color) !important;
+    color: red;
+    padding: 0px 5px;
+    font-weight: 500;
+  }
+
+  .did-floating-input-error::placeholder {
+    font-size: 10px;
+    color: red;
+  }
+
+  input:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}

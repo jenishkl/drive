@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "jsx": "react",
+    // "jsc": {
+    //   "transform": {
+    //     "react": {
+    //       "throwIfNamespace": false
+    //     }
+    //   }
+    // }
+
+  }
+}
+
