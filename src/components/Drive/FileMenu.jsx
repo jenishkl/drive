@@ -48,6 +48,11 @@ import RenamePopUp from "./RenamePopUp";
 import FileDetailPopUp from "./FileDetailPopUp";
 import { imageurl, USER } from "@/helpers/utils";
 import { useRouter } from "next/navigation";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { CiEdit } from "react-icons/ci";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { PiRecycleFill } from "react-icons/pi";
 export default function FileMenu({
   id,
   drive,
@@ -163,42 +168,61 @@ export default function FileMenu({
       <IconButton variant="contained" onClick={handleClick}>
         <MoreVertIcon sx={{ color: "#000 !important" }} />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} sx={{ p: 3 }}>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        sx={{ p: 3 }}
+        PaperProps={{
+          sx: {
+            p: 1,
+            border: "none",
+            boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+            borderRadius: "5px",
+          },
+        }}
+      >
         <IconMenuItem
           onClick={() => setOpenDetail(detail)}
           sx={{ width: "250px" }}
-          leftIcon={<InfoIcon />}
+          leftIcon={<IoIosInformationCircleOutline size={30} />}
           // rightIcon={<SaveIcon />}
           label="Details"
         />
         <IconMenuItem
           onClick={() => setRenamePopUp(detail)}
           sx={{ width: "250px" }}
-          leftIcon={<EditIcon />}
+          leftIcon={<CiEdit size={40} />}
           // rightIcon={<SaveIcon />}
           label="Rename"
         />
         <IconMenuItem
           onClick={() => handleDownloadFile()}
-          leftIcon={<FileDownloadIcon />}
+          leftIcon={<MdOutlineFileDownload size={20} />}
           // rightIcon={<SaveIcon />}
           label="Download"
         />
 
         {accessLevel == 2 && (
           <NestedMenuItem
-            leftIcon={<ShareIcon />}
+            MenuProps={{
+              PaperProps: {
+                boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+                borderRadius: "5px",
+              },
+            }}
+            leftIcon={<IoShareSocialOutline />}
             //   rightIcon={<FlutterDashIcon />}
             label="Share"
             parentMenuOpen={open}
           >
             <IconMenuItem
               onClick={() => setShareOpen(true)}
-              leftIcon={<ShareIcon />}
+              leftIcon={<IoShareSocialOutline size={20} />}
               // rightIcon={<SaveIcon />}
               label="Share"
             />
-            <IconMenuItem
+            {/* <IconMenuItem
               onClick={handleClose}
               leftIcon={<AddToDriveIcon />}
               // rightIcon={<SaveIcon />}
@@ -209,7 +233,7 @@ export default function FileMenu({
               leftIcon={<MoveToInboxIcon />}
               // rightIcon={<SaveIcon />}
               label="Drop Box"
-            />
+            /> */}
           </NestedMenuItem>
         )}
         {accessLevel == 2 && (
@@ -226,7 +250,7 @@ export default function FileMenu({
               // rightIcon={<SaveIcon />}
               label="Copy To"
             /> */}
-            <IconMenuItem
+            {/* <IconMenuItem
               onClick={() =>
                 setConfirmPopUp({
                   onSubmit: () => handleArchiveandBin(1),
@@ -238,7 +262,7 @@ export default function FileMenu({
               leftIcon={<ArchiveIcon />}
               // rightIcon={<SaveIcon />}
               label={archive == 1 ? "Un Archive" : "Archieve"}
-            />
+            /> */}
             <IconMenuItem
               onClick={() =>
                 setConfirmPopUp({
@@ -248,7 +272,7 @@ export default function FileMenu({
                   } this Folder`,
                 })
               }
-              leftIcon={<RecyclingIcon />}
+              leftIcon={<PiRecycleFill size={20}/>}
               // rightIcon={<SaveIcon />}
               label={bin == 1 ? "UnBin" : "Bin"}
             />

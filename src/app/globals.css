@@ -292,3 +292,6 @@ body {
 .rs-picker-popup {
   z-index: 3000 !important;
 }
+.file_menu ul li div p {
+  font-size: 14px !important;
+}

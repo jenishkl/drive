@@ -14,7 +14,7 @@ import React from "react";
 
 export default async function page({ searchParams }) {
   let params = {
-    client_id: searchParams?.people_id??null,
+    client_id: searchParams?.people_id ?? null,
   };
 
   let driveData = {};
@@ -55,7 +55,6 @@ export default async function page({ searchParams }) {
                 <Grid item xs={4} margin={"auto"}>
                   <Stack
                     direction={"column"}
-                    gap={2}
                     alignItems={"center"}
                     width={"100%"}
                     sx={{ pointerEvents: "none" }}
@@ -71,7 +70,7 @@ export default async function page({ searchParams }) {
                       alignItems={"center"}
                       textAlign={"center"}
                     >
-                      <Typography variant="bold" size="large">
+                      <Typography variant="bold" size="small">
                         No files or folders are shared with you
                       </Typography>
                       {/* <Typography variant="light" size="medium">

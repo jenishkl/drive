@@ -11,7 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { get } from "lodash";
+import { get, size } from "lodash";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FolderIcon from "@mui/icons-material/Folder";
@@ -81,14 +81,25 @@ export default function FolderFileSearch() {
         size="small"
         fullWidth
         forcePopupIcon={false}
+        componentsProps={{
+          paper: {
+            sx: {
+              border: "none !important",
+              borderRadius: "5px",
+              margin: "auto",
+              boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+              mt: 1,
+            },
+          },
+        }}
         className="border-0"
         sx={(theme) => ({
           borderRadius: theme.shape.borderRadius,
-
           "&:hover": {
             backgroundColor: theme?.palette?.input?.search_hover,
           },
           backgroundColor: theme?.palette?.input?.search,
+          
         })}
         clearIcon={true}
         filterSelectedOptions
@@ -113,11 +124,20 @@ export default function FolderFileSearch() {
         onInputChange={(e, v) => {
           debouncedOnChange(v);
         }}
-        noOptionsText={"No Results"}
+        loadingText={
+          <Typography variant="light" size={"vsmall"}>
+            Loading...
+          </Typography>
+        }
+        noOptionsText={
+          <Typography variant="light" size={"vsmall"}>
+            No Results
+          </Typography>
+        }
         renderOption={(props, option, value) => {
           return (
-            <Paper sx={{ borderTop: "unset" }} {...props}>
-              <Box width={"100%"}>
+            <Box {...props} sx={{ borderTop: "unset" }}>
+              <Box width={"100%"} py={0.5}>
                 <Box
                   width={"100%"}
                   gap={1}
@@ -132,7 +152,7 @@ export default function FolderFileSearch() {
                   {option?.type == 2 && (
                     <>
                       {imageTypes?.includes(option?.file_ext) ? (
-                        <Box width={"50px"} height={"50px"}>
+                        <Box width={"20px"} height={"20px"}>
                           <ImageCommon
                             original={true}
                             aspectRatio={1}
@@ -141,28 +161,36 @@ export default function FolderFileSearch() {
                           />
                         </Box>
                       ) : (
-                        file_icon(option?.file_ext)
+                        file_icon(option?.file_ext, 20)
                       )}
                     </>
                   )}
-                  <Typography>
+                  <Typography
+                    // variant="light"
+                    // size="small"
+                    sx={{
+                      fontSize: "13px !important",
+                      fontWeight: "100 !important",
+                    
+                    }}
+                  >
                     {option?.type == 1 ? option?.name : option?.file_name}
                   </Typography>
                 </Box>
               </Box>
-            </Paper>
+            </Box>
           );
         }}
         renderInput={(params) => (
           <TextField
             {...params}
-            placeholder="Search Folders&Files"
+            placeholder="Search Folders & Files"
             fullWidth
             variant="standard"
             sx={(theme) => ({
               caretColor: "black",
               border: "none",
-              p: 1,
+              p: 0.5,
               background: theme?.palette?.input?.search,
             })}
             InputProps={{
@@ -172,9 +200,14 @@ export default function FolderFileSearch() {
               // inputComponent: StyledInputBase,
               //   disableUnderline: disableUnderline,
               startAdornment: (
-                <>
-                  <SearchIcon />
-                </>
+                <Box mx={1}>
+                  <SearchIcon
+                    fontSize="medium"
+                    sx={(theme) => ({
+                      color: "#adafb0",
+                    })}
+                  />
+                </Box>
               ),
               endAdornment: (
                 <React.Fragment>

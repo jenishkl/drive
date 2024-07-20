@@ -20,7 +20,7 @@ export default async function page({ searchParams }) {
   };
 
   let driveData = {};
-  await API.get(`/cdrive/sharedFiles`, {params})
+  await API.get(`/cdrive/sharedFiles`, { params })
     .then((d) => (driveData = d))
     .catch((e) => console.log("e", e));
   const { folders, files } = driveData || {};

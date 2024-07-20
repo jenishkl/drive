@@ -101,7 +101,17 @@ export default function PeopleSelect({
           return (
             <Autocomplete
               // {...field}
-
+              componentsProps={{
+                paper: {
+                  sx: {
+                    border: "none !important",
+                    borderRadius: "5px",
+                    margin: "auto",
+                    boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+                    mt: 1,
+                  },
+                },
+              }}
               onFocus={scrollToInput}
               readOnly={readOnly}
               disabled={disabled}
@@ -111,7 +121,7 @@ export default function PeopleSelect({
               key={JSON.stringify(field.value)}
               freeSolo={freesolo ?? variant == "outlined"}
               filterSelectedOptions={false}
-              filterOptions={(op)=>op}
+              filterOptions={(op) => op}
               ListboxComponent={listcomponent && ListboxComponent}
               // disableCloseOnSelect={disableCloseOnSelect}
               // getOptionDisabled={(option) =>
@@ -204,15 +214,24 @@ export default function PeopleSelect({
               onInputChange={(e, v) => {
                 debouncedOnChange(v);
               }}
-              noOptionsText={noOptionsText}
+              loadingText={
+                <Typography variant="light" size={"vsmall"}>
+                  Loading...
+                </Typography>
+              }
+              noOptionsText={
+                <Typography variant="light" size={"vsmall"}>
+                  No Results
+                </Typography>
+              }
               renderOption={(props, option, value) => {
                 if (option === "Add More...") {
                   // Render the custom Add More component
                   return <AddMoreComponent {...props} />;
                 }
                 return (
-                  <Paper sx={{ borderTop: "unset" }} {...props}>
-                    <Box width={"100%"}>
+                  <Box {...props}>
+                    <Box width={"100%"} py={0.5}>
                       <Box
                         width={"100%"}
                         gap={1}
@@ -238,7 +257,7 @@ export default function PeopleSelect({
                             justifyContent={"space-between"}
                             alignItems={"center"}
                           >
-                            <Typography variant="bold" size="medium">
+                            <Typography variant="light" size="small">
                               {get(option, keyLabel)}
                             </Typography>
                             <Button
@@ -255,7 +274,7 @@ export default function PeopleSelect({
                             </Button>{" "}
                           </Stack>
                           {get(option, keyEmail) && (
-                            <Typography variant="light" size="small">
+                            <Typography variant="light" size="vsmall">
                               {get(option, keyEmail)}
                             </Typography>
                           )}
@@ -270,7 +289,7 @@ export default function PeopleSelect({
                         </Box>
                       </Box>
                     </Box>
-                  </Paper>
+                  </Box>
                 );
               }}
               renderInput={(params) => (

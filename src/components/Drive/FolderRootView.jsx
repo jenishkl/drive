@@ -24,6 +24,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { folderRoot } from "@/store/drive/driveActions";
 import { driveSelector } from "@/store/drive/driveSlice";
+import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
 export default function FolderRootView({
   folder_root,
   drive,
@@ -33,7 +34,7 @@ export default function FolderRootView({
 }) {
   const [expanded, setExpanded] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
-  const { tabValue, setTabValue } = React.useContext(GlobalContext)||{};
+  const { tabValue, setTabValue } = React.useContext(GlobalContext) || {};
   const params = useParams();
   const pathName = usePathname();
   const dispatch = useDispatch();
@@ -94,7 +95,6 @@ export default function FolderRootView({
     });
   };
   const FolderTreeView = ({ FolderDatas = [] }) => {
-
     return folderRootData?.map((folder, i) => {
       return (
         // i == 0 && (
@@ -126,7 +126,7 @@ export default function FolderRootView({
                   {...bindTrigger(popupState)}
                   endIcon={<></>}
                 >
-                  <AccountTreeIcon />
+                  <AccountTreeOutlinedIcon sx={{ fontSize: "18px" }} />
                 </IconButton>
                 <Menu {...bindMenu(popupState)} sx={{ pr: 1 }}>
                   <Box
@@ -219,7 +219,8 @@ export default function FolderRootView({
                     pathName?.split("/")[1]) ||
                   tabValue
                 }
-                size={"small"}
+                size={"vsmall"}
+                sx={{ textTransform: "capitalize !important" }}
                 variant={"light"}
               />
             </Link>
@@ -236,10 +237,11 @@ export default function FolderRootView({
                     >
                       <TTTypography
                         content={name}
-                        size={"small"}
+                        size={"vsmall"}
                         sx={{
                           color:
                             i == folder_root?.length - 1 && "blue !important",
+                          textTransform: "capitalize !important",
                         }}
                         variant={"light"}
                       />

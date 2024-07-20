@@ -1,6 +1,10 @@
 "use client";
-import TabDynamic from "@/components/Common/Tabs/TabDynamic";
-import HeaderDynamic from "@/components/Common/headers/HeaderDynamic";
+const TabDynamic = dynamic(() => import("@/components/Common/Tabs/TabDynamic"));
+const HeaderDynamic = dynamic(() =>
+  import("@/components/Common/headers/HeaderDynamic")
+);
+import dynamic from "next/dynamic";
+
 import {
   Box,
   Card,
@@ -18,13 +22,13 @@ import {
 } from "@mui/material";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
-// import { GlobalContext } from "./GlobalContextProvider";
+import { GlobalContext } from "./GlobalContextProvider";
 import { USER, decriptData } from "@/helpers/utils";
 import Link from "next/link";
-import MainSideBar from "./SideBars/MainSideBar";
+const MainSideBar = dynamic(() => import("./SideBars/MainSideBar"));
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
-import ThemeSwitch from "@/components/switch/ThemeSwitch";
+const ThemeSwitch = dynamic(() => import("@/components/switch/ThemeSwitch"));
 import MyAccountPopUp from "./MyaccountPopup";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
@@ -37,12 +41,16 @@ import {
   storageDetails,
 } from "@/store/drive/driveActions";
 import { useDispatch, useSelector } from "react-redux";
-import PopUpForm from "@/components/Common/Popups/PopUpForm";
+const PopUpForm = dynamic(() => import("@/components/Common/Popups/PopUpForm"));
 import { driveSelector } from "@/store/drive/driveSlice";
 import { useForm } from "react-hook-form";
-import UploadIcon from "@mui/icons-material/Upload";
 import _ from "lodash";
-import FolderFileSearch from "@/components/Common/InputFields/FolderFileSearch";
+import { LuFolderCog } from "react-icons/lu";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+const FolderFileSearch = dynamic(() =>
+  import("@/components/Common/InputFields/FolderFileSearch")
+);
 
 export default function DriveLayout({
   children,
@@ -54,6 +62,7 @@ export default function DriveLayout({
   const pathName = usePathname();
   const params = useParams();
   const [openFolder, setOpenFolder] = useState();
+  const [mousePosition, setMousePosition] = useState(null);
   const dispatch = useDispatch();
   const { control, setValue, watch, getValues, reset } = useForm();
   const formProps = { control, setValue, watch, getValues, reset };
@@ -64,8 +73,7 @@ export default function DriveLayout({
     storageDetailsLoading,
     storageDetailsData,
   } = useSelector(driveSelector);
-  const dd = {};
-  const { tabValue, setTabValue } = dd || {};
+
   const {
     //UPLOAD POPUP
     uploadOpen,
@@ -79,7 +87,7 @@ export default function DriveLayout({
 
     sideBarOpen,
     setSideBarOpen,
-  } = dd || {};
+  } = useContext(GlobalContext) || {};
   let tabList = [
     { name: "My Drive" },
     { name: "Work Drive" },
@@ -91,19 +99,19 @@ export default function DriveLayout({
 
   var drive = 2;
   var folder_id = 0;
-  // if (pathName?.split("/")?[1] == "my-drive") {
-  //   drive = 2;
-  //   folder_id = 0;
-  // }
-  // if (pathName?.split("/")[1] == "work-drive") {
-  //   drive = 1;
-  //   folder_id = 0;
-  // }
+  if (pathName?.split("/")?.[1] == "my-drive") {
+    drive = 2;
+    folder_id = 0;
+  }
+  if (pathName?.split("/")?.[1] == "work-drive") {
+    drive = 1;
+    folder_id = 0;
+  }
 
-  // if (pathName?.split("/")[1] == "drive") {
-  //   folder_id = decriptData(params?.folder)?.split("_")[0];
-  //   drive = decriptData(params?.folder)?.split("_")[1];
-  // }
+  if (pathName?.split("/")?.[1] == "drive") {
+    folder_id = decriptData(params?.folder)?.split("_")?.[0];
+    drive = decriptData(params?.folder)?.split("_")?.[1];
+  }
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -172,15 +180,14 @@ export default function DriveLayout({
       },
     },
   ];
-  const [mousePosition, setMousePosition] = useState(null);
 
-  const handleContextMenu = (event) => {
-    event.preventDefault();
-    setMousePosition({
-      mouseX: event.clientX,
-      mouseY: event.clientY,
-    });
-  };
+  // const handleContextMenu = (event) => {
+  //   event.preventDefault();
+  //   setMousePosition({
+  //     mouseX: event.clientX,
+  //     mouseY: event.clientY,
+  //   });
+  // };
 
   const handleClose = () => {
     setMousePosition(null);
@@ -191,7 +198,7 @@ export default function DriveLayout({
   return (
     <>
       <Box
-        onContextMenu={handleContextMenu}
+        // onContextMenu={handleContextMenu}
         style={{
           position: "relative",
         }}
@@ -260,7 +267,7 @@ export default function DriveLayout({
           // onDragOver={handleDragOver}
           // onDrop={handleDrop}
         >
-          {/* <HeaderDynamic
+          <HeaderDynamic
             sticky={true}
             top={"0px"}
             height={"62px"}
@@ -273,7 +280,22 @@ export default function DriveLayout({
                   alignItems={"center"}
                   justifyContent={"space-between"}
                 >
-                  <Stack direction={"row"} alignItems={"center"} width={"45%"}>
+                  <Stack
+                    direction={"row"}
+                    alignItems={"center"}
+                    justifyContent={"flex-start"}
+                    width={"45%"}
+                  >
+                    <IconButton
+                      onClick={() => setSideBarOpen(!sideBarOpen)}
+                      sx={{ ml: 2 }}
+                    >
+                      {/* {!sideBarOpen ? ( */}
+                      <MenuIcon />
+                      {/* // ) : (
+                      //   <MenuOpenIcon />
+                      // )} */}
+                    </IconButton>
                     <Typography
                       component={"div"}
                       sx={(theme) => ({
@@ -284,25 +306,32 @@ export default function DriveLayout({
                       variant="subtitle1"
                       fontWeight={700}
                       fontSize={23}
-                      ml={5}
+                      // ml={5}
                       textTransform={"uppercase"}
                     >
+                      {" "}
+                      <IconButton>
+                        <LuFolderCog
+                          size={40}
+                          color="#0038ff"
+                          sx={{ color: "var(--primary-color)" }}
+                        />{" "}
+                      </IconButton>
                       Drive
                     </Typography>{" "}
-                    <IconButton onClick={() => setSideBarOpen(!sideBarOpen)}>
-                      {!sideBarOpen ? (
-                        <FormatAlignRightIcon />
-                      ) : (
-                        <FormatAlignLeftIcon />
-                      )}
-                    </IconButton>
-                    <Grid item xs={6} md={12}>
+                    <Grid item xs={6} md={7} ml={1}>
                       <Card sx={{ border: "none" }}>
                         <FolderFileSearch />
                       </Card>
                     </Grid>
                   </Stack>
-
+                  {/* <Stack width={"100%"}>
+                    <Grid item xs={6} md={6}>
+                      <Card sx={{ border: "none" }}>
+                        <FolderFileSearch />
+                      </Card>
+                    </Grid>{" "}
+                  </Stack> */}
                   <Stack
                     direction={"row"}
                     alignItems={"center"}
@@ -313,18 +342,16 @@ export default function DriveLayout({
                     <MyAccountPopUp />
                   </Stack>
                 </Stack>
-
-           
               </>
             }
-          /> */}
+          />
           <Stack direction={"row"} width={"100%"}>
             <Box position={"sticky"}>
-              {/* <MainSideBar
+              <MainSideBar
                 folder_id={folder_id}
                 drive={drive}
                 grand_folder_details={grand_folder_details}
-              /> */}
+              />
             </Box>
             <Box width={"100%"} height={"100%"}>
               {children}

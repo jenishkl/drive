@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,6 +10,25 @@ const nextConfig = {
       },
     ],
   },
+  productionBrowserSourceMaps:false,
+  experimental:{
+    serverSourceMaps:false,
+  },
+
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack,config:cfg }
+  ) => {
+    if (cfg.cache && !dev) {
+      cfg.cache = Object.freeze({
+        type: "memory",
+      });
+      cfg.cache.maxMemoryGenerations = 0;
+    }
+    // Important: return the modified config
+    return config;
+  },
+  // output:"export",
 };
 
 export default nextConfig;

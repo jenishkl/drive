@@ -256,22 +256,11 @@ export default function DriveFilter({
     </Stack>
   );
   const filterleft = (
-    <Stack direction={"row"} justifyContent={"space-between"} width={"100%"}>
-      <Grid container spacing={2}>
-        {/* {search && (
-          <Grid item xs={12} md={6} lg={2}>
-            <StringField
-              {...formProps}
-              name="searchdebounce"
-              endAdornment={<SearchIcon />}
-              onChange={(e) => handleChange(e)}
-              //   label={"Search"}
-              placeholder="Search"
-            />
-          </Grid>
-        )} */}
+    <Stack direction={"row"} justifyContent={"space-between"} width={"100%"} >
+      <Grid container spacing={2} >
+
         {people && (
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={4} ml={1}>
             <PeopleSelect
               required={"Required"}
               {...formProps}

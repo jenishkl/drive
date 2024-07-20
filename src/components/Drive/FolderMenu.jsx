@@ -45,6 +45,12 @@ import { useRouter } from "next/navigation";
 import { driveSelector } from "@/store/drive/driveSlice";
 import { RotatingLines } from "react-loader-spinner";
 import { USER } from "@/helpers/utils";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { CiEdit } from "react-icons/ci";
+import { MdOutlineColorLens, MdOutlineFileDownload } from "react-icons/md";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { RiFolderSettingsLine } from "react-icons/ri";
+import { PiRecycleFill } from "react-icons/pi";
 export default function FolderMenu({
   id,
   drive,
@@ -161,15 +167,30 @@ export default function FolderMenu({
     }
   };
   return (
-    <>
+    <div className="file_menu">
       <IconButton variant="contained" onClick={handleClick}>
         <MoreVertIcon sx={{ color: "#000 !important" }} />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} sx={{ p: 3 }}>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        className="file_menu"
+        onClose={handleClose}
+        sx={{ p: 5 }}
+        PaperProps={{
+          sx: {
+            p: 1,
+            border: "none",
+            boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+            borderRadius: "5px",
+            fontSize: "5px !important",
+          },
+        }}
+      >
         <IconMenuItem
           onClick={() => setOpenDetail(detail)}
-          sx={{ width: "250px" }}
-          leftIcon={<InfoIcon />}
+          sx={{ width: "250px", fontSize: "5px !important" }}
+          leftIcon={<IoIosInformationCircleOutline size={20} />}
           // rightIcon={<SaveIcon />}
           label="Details"
         />
@@ -177,32 +198,40 @@ export default function FolderMenu({
           <IconMenuItem
             onClick={() => setRenamePopUp(detail)}
             sx={{ width: "250px" }}
-            leftIcon={<EditIcon />}
+            leftIcon={<CiEdit size={20} />}
             // rightIcon={<SaveIcon />}
             label="Rename"
           />
         )}
         <IconMenuItem
           onClick={() => handleDownloadFile()}
-          leftIcon={<FileDownloadIcon />}
+          leftIcon={<MdOutlineFileDownload size={20} />}
           // rightIcon={<SaveIcon />}
           label="Download"
         />
 
         {accessLevel == 2 && (
           <NestedMenuItem
-            leftIcon={<ShareIcon />}
+            className="file_menu"
+            leftIcon={<IoShareSocialOutline size={20} />}
             //   rightIcon={<FlutterDashIcon />}
+            MenuProps={{
+              className: "file_menu",
+              PaperProps: {
+                boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+                borderRadius: "5px",
+              },
+            }}
             label="Share"
             parentMenuOpen={open}
           >
             <IconMenuItem
               onClick={() => setShareOpen(true)}
-              leftIcon={<ShareIcon />}
+              leftIcon={<IoShareSocialOutline size={20} />}
               // rightIcon={<SaveIcon />}
               label="Share"
             />
-            <IconMenuItem
+            {/* <IconMenuItem
               onClick={handleClose}
               leftIcon={<AddToDriveIcon />}
               // rightIcon={<SaveIcon />}
@@ -213,14 +242,22 @@ export default function FolderMenu({
               leftIcon={<MoveToInboxIcon />}
               // rightIcon={<SaveIcon />}
               label="Drop Box"
-            />
+            /> */}
           </NestedMenuItem>
         )}
         {accessLevel == 2 && (
           <NestedMenuItem
-            leftIcon={<SourceIcon />}
+            className="file_menu"
+            leftIcon={<RiFolderSettingsLine size={20} />}
             //   rightIcon={<FlutterDashIcon />}
             label="Organize"
+            MenuProps={{
+              className: "file_menu",
+              PaperProps: {
+                boxShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.15)",
+                borderRadius: "5px",
+              },
+            }}
             parentMenuOpen={open}
           >
             {USER?.profile_id == 1 && detail?.parent_id == 0 && (
@@ -228,9 +265,9 @@ export default function FolderMenu({
             )}
             <IconMenuItem
               onClick={() => setChososeColorPopUp(true)}
-              leftIcon={<ColorLensIcon />}
+              leftIcon={<MdOutlineColorLens size={20}/>}
               // rightIcon={<SaveIcon />}
-              label="Choose color"
+              label="Choose Colour"
             />
 
             {/* <NestedMenuItem
@@ -262,7 +299,7 @@ export default function FolderMenu({
               // rightIcon={<SaveIcon />}
               label="Copy To"
             /> */}
-            <IconMenuItem
+            {/* <IconMenuItem
               onClick={() =>
                 setConfirmPopUp({
                   onSubmit: () => handleArchiveandBin(1),
@@ -274,7 +311,7 @@ export default function FolderMenu({
               leftIcon={<ArchiveIcon />}
               // rightIcon={<SaveIcon />}
               label={archive == 1 ? "Un Archive" : "Archieve"}
-            />
+            /> */}
             <IconMenuItem
               onClick={() =>
                 setConfirmPopUp({
@@ -284,7 +321,7 @@ export default function FolderMenu({
                   } this Folder`,
                 })
               }
-              leftIcon={<RecyclingIcon />}
+              leftIcon={<PiRecycleFill size={20}/>}
               // rightIcon={<SaveIcon />}
               label={bin == 1 ? "UnBin" : "Bin"}
             />
@@ -349,6 +386,6 @@ export default function FolderMenu({
           name={detail?.name}
         />
       )}
-    </>
+    </div>
   );
 }

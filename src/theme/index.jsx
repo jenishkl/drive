@@ -22,7 +22,7 @@ export default function ThemeProvider({ children }) {
       palette: palette(themeMode),
       mode: themeMode,
       typography: {
-        // fontFamily: "Mont !important",
+        fontFamily:"__Montserrat_dbdb17,__Montserrat_Fallback_dbdb17",
       },
       //   shape: { borderRadius: 8 },
     }),

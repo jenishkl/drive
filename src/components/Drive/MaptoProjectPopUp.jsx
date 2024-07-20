@@ -16,6 +16,7 @@ import { asignProject } from "@/store/drive/driveActions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { driveSelector } from "@/store/drive/driveSlice";
+import { AiOutlineFileAdd } from "react-icons/ai";
 export default function MaptoProjectPopUp({ folder_id, drive }) {
   const [maptoOpen, setMaptoOpen] = useState(false);
   const { asignProjectLoading } = useSelector(driveSelector);
@@ -47,9 +48,9 @@ export default function MaptoProjectPopUp({ folder_id, drive }) {
     <>
       <IconMenuItem
         onClick={() => setMaptoOpen(true)}
-        leftIcon={<LibraryAddIcon />}
+        leftIcon={<AiOutlineFileAdd size={20} />}
         // rightIcon={<SaveIcon />}
-        label="Asign Project"
+        label="Assign Project"
       />
       <Dialog sx={{ mt: 3 }} open={maptoOpen} fullWidth aria-labelledby={"ddd"}>
         <DialogTitle id={"ss"}>Select Project</DialogTitle>

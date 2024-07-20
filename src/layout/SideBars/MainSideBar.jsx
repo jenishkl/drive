@@ -33,11 +33,20 @@ import { usePathname } from "next/navigation";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import { TiCloudStorageOutline, TiHomeOutline } from "react-icons/ti";
 import { PiFolderUserBold } from "react-icons/pi";
-import { MdOutlineArchive } from "react-icons/md";
+import {
+  MdDeleteOutline,
+  MdFolderOpen,
+  MdOutlineArchive,
+} from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoPeopleOutline } from "react-icons/io5";
 import CreateNew from "@/components/Drive/CreateNew";
 import { CiFolderOn } from "react-icons/ci";
+import { GoHome } from "react-icons/go";
+import { LuFolderHeart } from "react-icons/lu";
+import { BsFolderSymlink } from "react-icons/bs";
+import { FaRegFileLines } from "react-icons/fa6";
+import { GrStorage } from "react-icons/gr";
 export const menuClasses = {
   root: "ps-menu-root",
   menuItemRoot: "ps-menuitem-root",
@@ -181,7 +190,7 @@ export default function MainSideBar({
             closeOnClick={true}
           >
             <MenuItem
-              icon={<TiHomeOutline />}
+              icon={<GoHome size={20} />}
               style={{
                 color: is_active("home")
                   ? "#fff"
@@ -194,7 +203,7 @@ export default function MainSideBar({
               Home
             </MenuItem>
             <MenuItem
-              icon={<PiFolderUserBold />}
+              icon={<LuFolderHeart size={20} />}
               style={{
                 color: is_active("my-drive")
                   ? "#fff"
@@ -207,7 +216,7 @@ export default function MainSideBar({
               My Drive
             </MenuItem>
             <MenuItem
-              icon={<CiFolderOn />}
+              icon={<MdFolderOpen size={22} />}
               style={{
                 color: is_active("work-drive")
                   ? "#fff"
@@ -220,7 +229,7 @@ export default function MainSideBar({
               Work Drive
             </MenuItem>
             <MenuItem
-              icon={<IoPeopleOutline />}
+              icon={<BsFolderSymlink size={20} />}
               style={{
                 color: is_active("shared-files")
                   ? "#fff"
@@ -233,7 +242,7 @@ export default function MainSideBar({
               Shared With Me
             </MenuItem>
             <MenuItem
-              icon={<CiFileOn />}
+              icon={<FaRegFileLines size={20} />}
               style={{
                 color: is_active("file-request")
                   ? "#fff"
@@ -259,7 +268,7 @@ export default function MainSideBar({
               Archived
             </MenuItem> */}
             <MenuItem
-              icon={<RiDeleteBin6Line />}
+              icon={<MdDeleteOutline size={23} />}
               style={{
                 color: is_active("bin")
                   ? "#fff"
@@ -271,7 +280,7 @@ export default function MainSideBar({
               Bin
             </MenuItem>
             <MenuItem
-              icon={<TiCloudStorageOutline />}
+              icon={<GrStorage  size={18} />}
               style={{
                 color: is_active("storage")
                   ? "#fff"

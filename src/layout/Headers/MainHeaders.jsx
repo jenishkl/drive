@@ -230,9 +230,6 @@ export default function MainHeader() {
               )}
             </IconButton>
             <GlobalSearch />
-            {/* <Box sx={{ ml: 3 }}>
-              <DivisionsFilter />
-            </Box> */}
           </Box>
           <Box
             sx={{ display: { xs: "none", md: "flex", alignItems: "center" } }}

@@ -127,7 +127,7 @@ export default function FolderCard({
       ) : (
         <Card
           sx={{
-            background: "#ECF0FF",
+            background: "#efefef",
             maxWidth: "500px",
             border: "none",
             cursor: "pointer",
@@ -137,11 +137,11 @@ export default function FolderCard({
           {
             <Link href={`/drive/${encriptData(id + "_" + drive)}`} >
               <Box className="row-align-between gap-2">
-                <FolderIcon sx={{ color: color ?? "grey !important" }} />
+                <FolderIcon sx={{ color: color ?? "grey !important",fontSize:"35px" }} />
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   <TTTypography
                     content={name}
-                    size={"medium"}
+                    size={"small"}
                     variant={"bold"}
                     loading={loading}
                     sx={{ color: "#000 !important", minWidth: "100px" }}
@@ -150,7 +150,7 @@ export default function FolderCard({
                   <Stack direction={"column"}>
                     <Typography
                       variant="light"
-                      size="xlsmall"
+                      size="vsmall"
                       sx={{ color: "#000 !important" }}
                     ></Typography>
                     <Typography

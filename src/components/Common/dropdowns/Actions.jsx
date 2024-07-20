@@ -30,6 +30,8 @@ export default function Actions({
                 display: "flex",
                 flexDirection: row ? "row" : "column",
                 height: "50px",
+                transition: "box-shadow 1s ease-out, width 0.5s linear",
+                boxShadow: !row ? "none" : "0px 0px 5px 1px rgb(222 222 222)",
               }}
               {...bindTrigger(popupState)}
               endIcon={<>{endIcon}</>}
